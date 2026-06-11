@@ -1,0 +1,20 @@
+/* Rechtsseiten PFOTENBUS — gemeinsames Stylesheet (Entwurfs-Modus) */
+:root{--creme:#FAF3E3;--dunkel:#2B1F17;--tinte:#38291E;--tinte-soft:#695342;--bulli:#B5472F;--honig:#E3A93B;--linie:#EBDFC8;--hell:#FFFDF7}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Nunito',-apple-system,'Segoe UI',sans-serif;background:var(--creme);color:var(--tinte);line-height:1.7;font-size:1.05rem}
+.lhead{background:var(--dunkel);color:var(--creme);padding:3.5rem 1.5rem 2.5rem}
+.lhead .inner{max-width:760px;margin:0 auto}
+.lhead a.back{color:var(--honig);text-decoration:none;font-weight:700;font-size:.95rem}
+.lhead a.back:focus-visible{outline:3px solid var(--honig);outline-offset:3px;border-radius:4px}
+.lhead h1{font-family:'Fraunces',Georgia,serif;font-weight:900;font-size:clamp(1.8rem,1.4rem + 2vw,2.6rem);margin-top:.6rem}
+.entwurf{display:inline-block;font-family:'Caveat',cursive;font-size:1.3rem;background:var(--honig);color:var(--dunkel);border-radius:.5em;padding:.05em .8em .15em;transform:rotate(-1.5deg);margin-top:.8rem}
+.sheet{max-width:760px;margin:0 auto;background:var(--hell);border:1px solid var(--linie);border-radius:1.2rem;padding:clamp(1.4rem,4vw,3rem);margin-top:-1.2rem;margin-bottom:3rem;position:relative}
+.sheet h2{font-family:'Fraunces',Georgia,serif;font-size:1.3rem;margin:1.8rem 0 .5rem}
+.sheet h2:first-child{margin-top:0}
+.sheet p,.sheet li{font-size:1rem;color:var(--tinte-soft)}
+.sheet ul{margin:.4rem 0 .4rem 1.3rem}
+.sheet a{color:var(--bulli)}
+.addr-block{background:var(--creme);border-radius:.8rem;padding:1rem 1.3rem;margin:.6rem 0;border:1px solid var(--linie)}
+.todo{background:#FFF3D6;border:1.5px dashed var(--honig);border-radius:.6rem;padding:.15em .6em;font-weight:700;color:#8A5A00;font-size:.92em}
+.lfoot{max-width:760px;margin:0 auto 3rem;padding:0 1.5rem;font-size:.92rem;color:var(--tinte-soft);text-align:center}
+@media (max-width:540px){.sheet{margin-left:1rem;margin-right:1rem}}

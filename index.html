@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<!--
+  ╔══════════════════════════════════════════════════════════════════════╗
+  ║  DER PFOTENBUS — Tier-Fahrdienst & Betreuung, Niederstotzingen        ║
+  ║  Unverbindliche Design-Vorschau · Geschenk für Klaus                   ║
+  ║  Erstellt von Lechcode (Landsberg am Lech) · Stand 11.06.2026          ║
+  ╠══════════════════════════════════════════════════════════════════════╣
+  ║  ⚠ VOR EINEM ECHTEN GO-LIVE (siehe _projekt/OFFENE-FRAGEN.md):
+  ║   • Telefonnummer ✓ (0172 686 52 77) · Foto ✓ (assets/img/klaus.jpg)
+  ║   • Erreichbarkeitszeiten, Preise, Einzugsgebiet bestätigen
+  ║   • Impressum + Datenschutz vervollständigen → dann noindex raus
+  ║   • Alle Texte sind Vorschläge: VOM KUNDEN (Klaus) ZU PRÜFEN
+  ╚══════════════════════════════════════════════════════════════════════╝
+-->
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>if(location.search.indexOf('foto')===-1)document.documentElement.classList.add('js')</script>
+<!-- ENTFERNEN sobald Impressum+Datenschutz live & von Klaus freigegeben -->
+<meta name="robots" content="noindex, nofollow">
+<title>Der Pfotenbus · Tier-Fahrdienst &amp; Betreuung in Niederstotzingen</title>
+<meta name="description" content="Der Pfotenbus bringt Ihr Tier zum Tierarzt — und Sie fahren einfach mit. Fahrdienst, Gassi-Hilfe und Zeit zum Zuhören für Tierfreunde rund um Niederstotzingen.">
+<meta property="og:title" content="Der Pfotenbus — Ihr Tier fährt mit. Und Sie auch.">
+<meta property="og:description" content="Tier-Fahrdienst &amp; Betreuung mit Herz für Niederstotzingen und Umgebung. Zum Tierarzt, zum Gassi, zum Zuhören — rufen Sie einfach an.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="de_DE">
+<meta property="og:image" content="https://lechcode.github.io/pfotenbus-vorschau/assets/og.jpg">
+<meta property="og:url" content="https://lechcode.github.io/pfotenbus-vorschau/">
+<meta name="theme-color" content="#B5472F">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23B5472F'/%3E%3Cpath d='M10 31 V21 q0-9 9-9 h26 q9 0 9 9 v10 z' fill='%23FAF3E3'/%3E%3Crect x='14' y='17' width='15' height='11' rx='3' fill='%23CFE4DC'/%3E%3Crect x='35' y='17' width='15' height='11' rx='3' fill='%23CFE4DC'/%3E%3Ccircle cx='18' cy='39' r='5' fill='%23FAF3E3'/%3E%3Ccircle cx='46' cy='39' r='5' fill='%23FAF3E3'/%3E%3Ccircle cx='18' cy='39' r='2.6' fill='%23E3A93B'/%3E%3Ccircle cx='46' cy='39' r='2.6' fill='%23E3A93B'/%3E%3Cpath d='M32 47.5 c-4.2-3.5-7-5.9-7-9.1 a4.1 4.1 0 0 1 7-2.7 a4.1 4.1 0 0 1 7 2.7 c0 3.2-2.8 5.6-7 9.1z' fill='%23FAF3E3'/%3E%3Crect x='12' y='52' width='40' height='5' rx='2.5' fill='%23FAF3E3'/%3E%3C/svg%3E">
+<link rel="preload" href="assets/fonts/fraunces-900.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/fonts.css">
+<!-- Kein JSON-LD im Demo-Modus: Telefon/Adresse sind noch Platzhalter — wird beim Go-Live ergänzt (LocalBusiness). -->
+<style>
+/* ============ 1 · TOKENS — warme Bulli-Palette ============ */
+:root{
+  --creme:#FAF3E3; --hell:#FFFDF7; --sand:#F3E8D2;
+  --tinte:#38291E; --tinte-soft:#695342; --dunkel:#2B1F17;
+  --bulli:#B5472F; --bulli-tief:#93351F; --honig:#E3A93B;
+  --salbei:#7E9B72; --salbei-tief:#3F5840; --salbei-hell:#EEF1E2;
+  --himmel:#CFE4DC; --linie:#EBDFC8;
+  --display:'Fraunces',Georgia,serif; --sans:'Nunito',-apple-system,'Segoe UI',sans-serif; --hand:'Caveat',cursive;
+  /* Senior-First-Skala: Basis ≥ 17 px, ruhige Zeilen */
+  --step--1:clamp(.94rem,.9rem + .2vw,1.02rem);
+  --step-0:clamp(1.07rem,1rem + .35vw,1.2rem);
+  --step-1:clamp(1.25rem,1.15rem + .5vw,1.5rem);
+  --step-2:clamp(1.55rem,1.35rem + 1vw,2.05rem);
+  --step-3:clamp(1.95rem,1.55rem + 1.9vw,2.8rem);
+  --step-4:clamp(2.35rem,1.85rem + 2.9vw,3.7rem);
+  --s1:.5rem; --s2:1rem; --s3:1.6rem; --s4:2.6rem; --s5:4.2rem; --s6:6.5rem;
+  --radius:1.4rem; --radius-s:.85rem;
+  --shadow:0 18px 44px -18px rgba(56,41,30,.25);
+  --ease:cubic-bezier(.22,.8,.3,1); --nav-h:78px; --wrap:1120px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--nav-h) + 14px)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{font-family:var(--sans);font-size:var(--step-0);line-height:1.7;color:var(--tinte);background:var(--creme);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img,svg{max-width:100%;display:block}
+h1,h2,h3{font-family:var(--display);font-weight:900;line-height:1.14;text-wrap:balance}
+h2{font-size:var(--step-3);margin-bottom:var(--s3)}
+a{color:var(--bulli)}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.skip{position:absolute;left:-999px;top:0;background:var(--bulli);color:#fff;padding:.7rem 1.2rem;z-index:300;border-radius:0 0 .6rem 0;font-weight:700;text-decoration:none}
+.skip:focus{left:0}
+:focus-visible{outline:3px solid var(--bulli);outline-offset:3px;border-radius:4px}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 clamp(1.1rem,4vw,2rem)}
+section{padding:var(--s6) 0;position:relative}
+.eyebrow{font-family:var(--hand);font-size:clamp(1.35rem,1.15rem + 1vw,1.8rem);color:var(--bulli);display:block;margin-bottom:var(--s1)}
+.lead{font-size:var(--step-1);color:var(--tinte-soft);max-width:48ch}
+.center{text-align:center}
+.center .lead{margin-inline:auto}
+
+/* Buttons — groß, eindeutig, gut zu treffen (Tap ≥ 48 px) */
+.btn{display:inline-flex;align-items:center;gap:.6em;font-weight:700;font-size:var(--step-0);text-decoration:none;border-radius:99px;padding:.95em 1.8em;min-height:48px;transition:transform .25s var(--ease),box-shadow .25s var(--ease),background .25s;border:2.5px solid transparent;cursor:pointer}
+.btn-bulli{background:var(--bulli);color:#fff;box-shadow:0 12px 28px -10px rgba(181,71,47,.55)}
+.btn-bulli:hover{background:var(--bulli-tief);transform:translateY(-2px)}
+.btn-ghost{border-color:rgba(56,41,30,.35);color:var(--tinte)}
+.btn-ghost:hover{background:rgba(56,41,30,.06);transform:translateY(-2px)}
+.btn .ic{width:1.25em;height:1.25em;flex:none}
+
+/* ============ 2 · NAV ============ */
+.nav{position:fixed;inset:0 0 auto 0;height:var(--nav-h);z-index:100;display:flex;align-items:center;transition:background .3s,box-shadow .3s}
+.nav.scrolled{background:rgba(250,243,227,.93);backdrop-filter:blur(12px);box-shadow:0 4px 24px rgba(56,41,30,.12)}
+.nav .wrap{width:100%;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.brand{display:inline-flex;align-items:center;gap:.7rem;text-decoration:none;color:var(--tinte)}
+.brand svg{height:50px;width:auto}
+.brand .name{font-family:var(--display);font-weight:900;font-size:1.45rem;line-height:1}
+.brand .sub{display:block;font-family:var(--hand);font-size:1.05rem;color:var(--bulli);line-height:1.1;margin-top:.15rem}
+.nav-links{display:flex;align-items:center;gap:clamp(1rem,2.4vw,2rem);list-style:none}
+.nav-links a:not(.btn){color:var(--tinte);text-decoration:none;font-weight:700;font-size:var(--step--1);padding:.4em 0;border-bottom:3px solid transparent;transition:border-color .25s}
+.nav-links a:not(.btn):hover{border-bottom-color:var(--honig)}
+.nav-links .btn{padding:.65em 1.3em;font-size:var(--step--1)}
+.burger{display:none;background:none;border:none;cursor:pointer;padding:12px;z-index:210}
+.burger span{display:block;width:26px;height:3px;background:var(--tinte);border-radius:2px;transition:.3s;margin:5px 0}
+.menu-open .burger span:nth-child(1){transform:translateY(8px) rotate(45deg)}
+.menu-open .burger span:nth-child(2){opacity:0}
+.menu-open .burger span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
+.mobile-menu{display:none}
+@media (max-width:900px){
+  .nav-links{display:none}
+  .burger{display:block}
+  .mobile-menu{display:flex;position:fixed;inset:0;background:var(--creme);z-index:200;flex-direction:column;align-items:center;justify-content:center;gap:1.6rem;opacity:0;pointer-events:none;transition:opacity .3s}
+  .menu-open .mobile-menu{opacity:1;pointer-events:auto}
+  .mobile-menu a{font-family:var(--display);font-weight:900;font-size:1.6rem;color:var(--tinte);text-decoration:none}
+  .mobile-menu .btn{font-family:var(--sans);font-size:1.1rem;color:#fff}
+}
+
+/* ============ 3 · HERO ============ */
+.hero{padding:calc(var(--nav-h) + clamp(2.5rem,6vw,5rem)) 0 0;min-height:92svh;display:flex;align-items:center;overflow:hidden;
+  background:radial-gradient(60vmax 40vmax at 85% -10%,rgba(227,169,59,.18),transparent 60%),
+             radial-gradient(50vmax 36vmax at -10% 110%,rgba(126,155,114,.14),transparent 55%),var(--creme)}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(2rem,5vw,4.5rem);align-items:center;width:100%}
+.hero h1{font-size:var(--step-4);max-width:15ch}
+.hero h1 em{font-style:normal;color:var(--bulli);position:relative;white-space:nowrap}
+.hero h1 em svg{position:absolute;left:0;bottom:-.22em;width:100%;height:.3em;overflow:visible}
+.hero .lead{margin-top:var(--s3)}
+.hero-cta{display:flex;gap:1rem;flex-wrap:wrap;margin-top:var(--s4)}
+.hero-tel{display:flex;align-items:center;gap:.5em;margin-top:var(--s3);font-family:var(--display);font-weight:900;font-size:var(--step-2)}
+.hero-tel svg{width:1em;height:1em;color:var(--bulli);flex:none}
+.hero-tel a{color:var(--tinte);text-decoration:none;border-bottom:4px solid var(--honig);transition:color .25s}
+.hero-tel a:hover{color:var(--bulli)}
+.hero-trust{display:flex;flex-wrap:wrap;gap:.6rem 1.6rem;margin-top:var(--s4);padding:0;list-style:none}
+.hero-trust li{display:inline-flex;align-items:center;gap:.55rem;font-size:var(--step--1);font-weight:700;color:var(--tinte-soft)}
+.hero-trust svg{width:1.35em;height:1.35em;flex:none}
+.hero-art{position:relative}
+.hero-art svg{width:100%;height:auto}
+@media (max-width:900px){
+  .hero{min-height:0;padding-bottom:1rem}
+  .hero-grid{grid-template-columns:1fr}
+  .hero-art{order:-1;max-width:520px;margin-inline:auto}
+}
+@media (max-width:640px){
+  /* nowrap + SVG-Schlangenlinie passen nicht mehr in die Zeile → mehrzeilenfähige Unterstreichung */
+  .hero h1 em{white-space:normal;text-decoration:underline;text-decoration-color:var(--honig);text-decoration-thickness:.13em;text-underline-offset:.14em}
+  .hero h1 em svg{display:none}
+}
+
+/* Bulli-Ambient (Motion-Budget a: Wippen + Räder) */
+.bus-group{animation:bob 2.8s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+.wheel{transform-box:fill-box;transform-origin:center;animation:roll 6s linear infinite}
+@keyframes roll{to{transform:rotate(360deg)}}
+.cloud-a{animation:drift 14s ease-in-out infinite alternate}
+.cloud-b{animation:drift 18s ease-in-out infinite alternate-reverse}
+@keyframes drift{from{transform:translateX(0)}to{transform:translateX(26px)}}
+/* Motion-Budget b: Herzchen & Pfoten-Tippeln */
+.heart-f{opacity:0;animation:heartf 5.5s ease-in-out infinite}
+.heart-f.h2{animation-delay:2.6s}
+@keyframes heartf{0%{opacity:0;transform:translateY(0) scale(.8)}18%{opacity:.9}45%{opacity:0;transform:translateY(-34px) scale(1.05)}100%{opacity:0}}
+.paw-t{opacity:.5}
+.js .paw-t{opacity:0;animation:pawt 7s ease-in-out infinite}
+.js .paw-t.p2{animation-delay:.5s}.js .paw-t.p3{animation-delay:1s}.js .paw-t.p4{animation-delay:1.5s}.js .paw-t.p5{animation-delay:2s}
+@keyframes pawt{0%{opacity:0}10%{opacity:.55}55%{opacity:.55}75%{opacity:0}100%{opacity:0}}
+
+/* ============ 4 · SEKTIONEN ============ */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:var(--s4)}
+.cards.four{grid-template-columns:repeat(4,1fr)}
+.card{background:var(--hell);border:1px solid var(--linie);border-radius:var(--radius);padding:1.8rem 1.6rem;box-shadow:var(--shadow);transition:transform .3s var(--ease)}
+.card:hover{transform:translateY(-4px)}
+.card h3{font-size:var(--step-1);margin:.9rem 0 .55rem}
+.card p{color:var(--tinte-soft);font-size:var(--step-0)}
+.card .ic{width:58px;height:58px}
+@media (max-width:900px){.cards,.cards.four{grid-template-columns:1fr 1fr}}
+@media (max-width:580px){.cards,.cards.four{grid-template-columns:1fr}}
+
+/* Pfoten-Trenner */
+.paw-divider{display:flex;justify-content:center;gap:1.5rem;padding:0 0 var(--s2)}
+.paw-divider svg{width:26px;height:26px;opacity:.45}
+.paw-divider svg:nth-child(2){transform:rotate(14deg) translateY(-7px)}
+.paw-divider svg:nth-child(3){transform:rotate(-8deg)}
+.paw-divider svg:nth-child(4){transform:rotate(12deg) translateY(-7px)}
+
+/* Ablauf */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:var(--s4);counter-reset:step}
+.step{background:var(--hell);border:1px solid var(--linie);border-radius:var(--radius);padding:1.8rem 1.6rem;position:relative;box-shadow:var(--shadow)}
+.step::before{counter-increment:step;content:counter(step);position:absolute;top:-1.1rem;left:1.4rem;width:2.4rem;height:2.4rem;border-radius:50%;background:var(--honig);color:var(--dunkel);font-family:var(--display);font-weight:900;font-size:1.2rem;display:grid;place-items:center;box-shadow:0 6px 14px -6px rgba(227,169,59,.7)}
+.step h3{font-size:var(--step-1);margin:.6rem 0 .55rem}
+.step p{color:var(--tinte-soft)}
+.step .ic{width:54px;height:54px;margin-bottom:.4rem}
+@media (max-width:760px){.steps{grid-template-columns:1fr;gap:2rem}}
+
+/* Über Klaus */
+.klaus{background:var(--sand)}
+.klaus-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(2rem,5vw,4.5rem);align-items:center}
+.klaus p+p{margin-top:1em}
+.klaus .body{color:var(--tinte-soft)}
+.polaroid{background:var(--hell);border:1px solid var(--linie);border-radius:.6rem;padding:1rem 1rem 1.2rem;box-shadow:var(--shadow);transform:rotate(2.5deg);max-width:340px;margin-inline:auto;position:relative}
+.polaroid::before,.polaroid::after{content:"";position:absolute;width:86px;height:26px;background:rgba(227,169,59,.45);top:-13px;transform:rotate(-4deg);border-radius:2px}
+.polaroid::before{left:18px}
+.polaroid::after{right:18px;transform:rotate(5deg)}
+.polaroid img{width:100%;height:auto;border-radius:.45rem;display:block}
+.polaroid .caption{font-family:var(--hand);font-size:1.3rem;text-align:center;margin-top:.8rem;color:var(--tinte)}
+.quote-card{margin-top:var(--s4);background:var(--hell);border:1px solid var(--linie);border-radius:var(--radius);padding:clamp(1.6rem,4vw,2.6rem);box-shadow:var(--shadow);transform:rotate(-.6deg)}
+.quote-card p.q{font-family:var(--hand);font-size:clamp(1.7rem,1.3rem + 2vw,2.6rem);line-height:1.25;color:var(--bulli)}
+.quote-card p.q-note{margin-top:.6rem;font-size:var(--step--1);color:var(--tinte-soft)}
+@media (max-width:900px){.klaus-grid{grid-template-columns:1fr}.polaroid{margin-top:1.5rem}}
+
+/* Schwere Stunden */
+.abschied{background:var(--salbei-hell)}
+.abschied .eyebrow{color:var(--salbei-tief)}
+.abschied-grid{display:grid;grid-template-columns:auto 1fr;gap:clamp(1.6rem,4vw,3.5rem);align-items:start;max-width:880px}
+.abschied-grid>svg{width:clamp(80px,12vw,130px);height:auto;flex:none;margin-top:.4rem}
+.abschied p{color:var(--tinte-soft);max-width:56ch}
+.abschied p+p{margin-top:1em}
+.abschied .still{font-family:var(--hand);font-size:clamp(1.4rem,1.2rem + 1vw,1.9rem);color:var(--salbei-tief);margin-top:1.2em}
+@media (max-width:640px){.abschied-grid{grid-template-columns:1fr}.abschied-grid>svg{margin-inline:auto}}
+
+/* Region */
+.region-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4rem);align-items:center}
+.orte{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:var(--s3);padding:0;list-style:none}
+.orte li{background:var(--hell);border:1.5px solid var(--linie);border-radius:99px;padding:.5em 1.1em;font-weight:700;font-size:var(--step--1)}
+.orte li.home{background:var(--bulli);border-color:var(--bulli);color:#fff}
+.region-note{margin-top:var(--s3);color:var(--tinte-soft)}
+.region-art svg{width:100%;height:auto}
+@media (max-width:840px){.region-grid{grid-template-columns:1fr}}
+
+/* FAQ */
+.faq{max-width:780px;margin-inline:auto}
+.faq details{background:var(--hell);border:1px solid var(--linie);border-radius:var(--radius-s);margin-top:.9rem;box-shadow:0 8px 22px -14px rgba(56,41,30,.2)}
+.faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;font-weight:700;font-size:var(--step-0);padding:1.1rem 1.3rem;min-height:48px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:var(--display);font-size:1.5rem;color:var(--bulli);flex:none;transition:transform .25s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq .a{padding:0 1.3rem 1.2rem;color:var(--tinte-soft)}
+
+/* Kontakt */
+.kontakt-card{background:var(--hell);border:1px solid var(--linie);border-radius:var(--radius);box-shadow:var(--shadow);padding:clamp(2rem,5vw,3.5rem);text-align:center;max-width:780px;margin-inline:auto;position:relative;overflow:hidden}
+.kontakt-card::before{content:"";position:absolute;inset:auto -40px -60px auto;width:200px;height:200px;background:radial-gradient(circle,rgba(227,169,59,.18),transparent 65%)}
+.tel-chip{display:inline-flex;align-items:center;gap:.7em;margin-top:var(--s3);background:var(--bulli);color:#fff;border-radius:1.2rem;padding:.7em 1.2em;font-family:var(--display);font-weight:900;font-size:clamp(1.5rem,1.1rem + 2.4vw,2.4rem);text-decoration:none;box-shadow:0 16px 34px -14px rgba(181,71,47,.6);transition:transform .25s var(--ease),background .25s}
+.tel-chip:hover{background:var(--bulli-tief);transform:translateY(-2px)}
+.tel-chip svg{width:1.1em;height:1.1em;flex:none}
+.tel-note{font-family:var(--hand);font-size:1.35rem;color:var(--bulli);margin-top:.9rem;transform:rotate(-1.2deg)}
+.kontakt-zeilen{margin-top:var(--s4);display:grid;gap:.5rem;color:var(--tinte-soft);font-size:var(--step-0)}
+.kontakt-zeilen b{color:var(--tinte)}
+
+/* ============ 5 · FOOTER ============ */
+footer{background:var(--dunkel);color:var(--creme);padding:var(--s5) 0 calc(var(--s4) + 64px);margin-top:var(--s2)}
+footer .cols{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:2.5rem}
+footer h3{font-size:var(--step-0);color:var(--honig);margin-bottom:.8rem}
+footer ul{list-style:none}
+footer li{margin:.45rem 0}
+footer a{color:var(--creme);text-decoration:none;border-bottom:1px solid rgba(250,243,227,.3)}
+footer a:hover{border-bottom-color:var(--honig)}
+footer .brandline{display:flex;align-items:center;gap:.8rem}
+footer .brandline svg{height:54px;width:auto}
+footer .brandline .name{font-family:var(--display);font-weight:900;font-size:1.4rem}
+footer .claim{margin-top:1rem;max-width:30ch;color:rgba(250,243,227,.75);font-size:var(--step--1)}
+footer .legal{border-top:1px solid rgba(250,243,227,.18);margin-top:var(--s4);padding-top:1.4rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:var(--step--1);color:rgba(250,243,227,.65)}
+@media (max-width:760px){footer .cols{grid-template-columns:1fr}}
+
+/* Sticky-Kontaktleiste (mobil) */
+.sticky-bar{position:fixed;bottom:0;left:0;right:0;z-index:90;display:none;background:var(--hell);border-top:1.5px solid var(--linie);box-shadow:0 -8px 24px rgba(56,41,30,.14);padding-bottom:env(safe-area-inset-bottom)}
+.sticky-bar a{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;padding:.6rem .3rem .7rem;text-decoration:none;color:var(--tinte);font-weight:700;font-size:.85rem;min-height:48px}
+.sticky-bar a span.em{font-size:1.25rem;line-height:1}
+.sticky-bar a:first-child{color:var(--bulli)}
+@media (max-width:760px){.sticky-bar{display:flex}}
+
+/* ============ 6 · REVEALS & MOTION-SCHALTER ============ */
+.js .reveal{opacity:0;transform:translateY(20px)}
+.js .reveal.in{opacity:1;transform:none;transition:opacity .5s var(--ease),transform .5s var(--ease)}
+@media (prefers-reduced-motion:reduce){
+  .js .reveal{opacity:1;transform:none}
+  .bus-group,.wheel,.cloud-a,.cloud-b,.heart-f,.js .paw-t{animation:none}
+  .heart-f{opacity:0}
+  .js .paw-t{opacity:.5}
+  .btn,.card{transition:none}
+}
+
+/* ============ 7 · DRUCK (Aushang/Kärtchen-Beilage) ============ */
+@media print{
+  .nav,.hero-art,.sticky-bar,.mobile-menu,.paw-divider,footer .cols,.region-art{display:none!important}
+  body{background:#fff;color:#000;font-size:11pt}
+  section{padding:1.2rem 0;page-break-inside:avoid}
+  .hero{min-height:0;padding:0}
+  .card,.step,.kontakt-card,.quote-card{box-shadow:none;border:1px solid #bbb}
+  a{color:#000;text-decoration:none}
+}
+</style>
+</head>
+<body>
+
+<a class="skip" href="#inhalt">Zum Inhalt springen</a>
+
+<!-- ======== NAV ======== -->
+<nav class="nav" id="nav" aria-label="Hauptnavigation">
+  <div class="wrap">
+    <a class="brand" href="#" aria-label="Der Pfotenbus — zum Seitenanfang">
+      <!-- Logo: T1-Bulli-Front, Hund & Katze, Pfoten-Emblem -->
+      <svg viewBox="0 0 120 112" role="img" aria-label="Logo: alter Bulli, aus dem ein Hund und eine Katze schauen">
+        <path d="M60 9.5 c-2.7-2.3-4.7-3.9-4.7-6.1 a2.7 2.7 0 0 1 4.7-1.8 a2.7 2.7 0 0 1 4.7 1.8 c0 2.2-2 3.8-4.7 6.1z" fill="#B5472F"/>
+        <circle cx="32" cy="99" r="9" fill="#3A2A1E"/><circle cx="32" cy="99" r="3.6" fill="#FAF3E3"/>
+        <circle cx="88" cy="99" r="9" fill="#3A2A1E"/><circle cx="88" cy="99" r="3.6" fill="#FAF3E3"/>
+        <path d="M10 92 V32 Q10 12 30 12 H90 Q110 12 110 32 V92 Z" fill="#B5472F"/>
+        <path d="M10 56 V32 Q10 12 30 12 H90 Q110 12 110 32 V56 Z" fill="#F7EBD3"/>
+        <path d="M10 56 H42 M78 56 H110" stroke="#3A2A1E" stroke-width="2.5"/>
+        <path d="M42 56 H78 L66 92 H54 Z" fill="#F7EBD3" stroke="#3A2A1E" stroke-width="2.5" stroke-linejoin="round"/>
+        <rect x="20" y="22" width="34" height="26" rx="7" fill="#CFE4DC" stroke="#3A2A1E" stroke-width="2.5"/>
+        <rect x="66" y="22" width="34" height="26" rx="7" fill="#CFE4DC" stroke="#3A2A1E" stroke-width="2.5"/>
+        <!-- Hund (links) -->
+        <path d="M27.5 33 q-6.5 1.5 -6 11 q.3 4.5 4.2 4.2 q3.8-.3 3.8-5.5z" fill="#6F523B" stroke="#3A2A1E" stroke-width="2"/>
+        <path d="M46.5 33 q6.5 1.5 6 11 q-.3 4.5 -4.2 4.2 q-3.8-.3 -3.8-5.5z" fill="#6F523B" stroke="#3A2A1E" stroke-width="2"/>
+        <circle cx="37" cy="40" r="11.5" fill="#8A6A4F" stroke="#3A2A1E" stroke-width="2.5"/>
+        <ellipse cx="37" cy="44.5" rx="6.4" ry="5" fill="#C9A77F"/>
+        <circle cx="37" cy="42.2" r="2.5" fill="#3A2A1E"/>
+        <path d="M37 44.8 q1 4.6 4 5.4" stroke="#3A2A1E" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+        <path d="M39.5 48.4 q2.6 3.4 1 5.6 q-2.4 1.4 -3.4-1.6 q-.6-2.2 .4-4z" fill="#E2826E" stroke="#3A2A1E" stroke-width="1.6" stroke-linejoin="round"/>
+        <circle cx="32.6" cy="36.8" r="1.8" fill="#3A2A1E"/><circle cx="41.4" cy="36.8" r="1.8" fill="#3A2A1E"/>
+        <!-- Katze (rechts) -->
+        <path d="M76 35 L73.5 23.5 L83 29.5 Z" fill="#98897C" stroke="#3A2A1E" stroke-width="2" stroke-linejoin="round"/>
+        <path d="M90 35 L92.5 23.5 L83 29.5 Z" fill="#98897C" stroke="#3A2A1E" stroke-width="2" stroke-linejoin="round"/>
+        <path d="M77.5 31.5 L76.6 27.5 L80 29.7 Z" fill="#E2826E"/>
+        <path d="M88.5 31.5 L89.4 27.5 L86 29.7 Z" fill="#E2826E"/>
+        <circle cx="83" cy="41" r="10" fill="#98897C" stroke="#3A2A1E" stroke-width="2.5"/>
+        <circle cx="79" cy="39.5" r="1.7" fill="#3A2A1E"/><circle cx="87" cy="39.5" r="1.7" fill="#3A2A1E"/>
+        <path d="M83 43.2 l-1.5 1.8 h3 z" fill="#E2826E"/>
+        <path d="M80.5 45.8 q-3.5 1.4 -6 .6 M80.8 47.6 q-3 1.6 -5.4 1.4 M85.5 45.8 q3.5 1.4 6 .6 M85.2 47.6 q3 1.6 5.4 1.4" stroke="#3A2A1E" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+        <!-- Pfoten-Emblem, Scheinwerfer, Stoßstange -->
+        <circle cx="60" cy="70" r="10" fill="#F7EBD3" stroke="#3A2A1E" stroke-width="2.5"/>
+        <ellipse cx="60" cy="73" rx="4" ry="3.1" fill="#B5472F"/>
+        <circle cx="55.4" cy="67.6" r="2" fill="#B5472F"/><circle cx="60" cy="66" r="2" fill="#B5472F"/><circle cx="64.6" cy="67.6" r="2" fill="#B5472F"/>
+        <circle cx="24" cy="68" r="7" fill="#FFF8E6" stroke="#3A2A1E" stroke-width="2.5"/><circle cx="24" cy="68" r="3.4" fill="#E3A93B"/>
+        <circle cx="96" cy="68" r="7" fill="#FFF8E6" stroke="#3A2A1E" stroke-width="2.5"/><circle cx="96" cy="68" r="3.4" fill="#E3A93B"/>
+        <path d="M10 92 V32 Q10 12 30 12 H90 Q110 12 110 32 V92 Z" fill="none" stroke="#3A2A1E" stroke-width="3" stroke-linejoin="round"/>
+        <rect x="16" y="88" width="88" height="9" rx="4.5" fill="#E8D9BD" stroke="#3A2A1E" stroke-width="2.5"/>
+      </svg>
+      <span><span class="name">Der Pfotenbus</span><span class="sub">Tier-Fahrdienst &amp; Betreuung</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#hilfe">So helfe ich</a></li>
+      <li><a href="#ablauf">So geht’s</a></li>
+      <li><a href="#klaus">Über mich</a></li>
+      <li><a href="#fragen">Fragen</a></li>
+      <li><a class="btn btn-bulli" href="tel:+491726865277"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2z"/></svg>Anrufen</a></li>
+    </ul>
+    <button class="burger" id="burger" aria-expanded="false" aria-label="Menü öffnen"><span></span><span></span><span></span></button>
+  </div>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="#hilfe">So helfe ich</a>
+    <a href="#ablauf">So geht’s</a>
+    <a href="#klaus">Über mich</a>
+    <a href="#region">Region</a>
+    <a href="#fragen">Fragen</a>
+    <a class="btn btn-bulli" href="tel:+491726865277">📞 0172 686 52 77</a>
+  </div>
+</nav>
+
+<main id="inhalt">
+
+<!-- ======== HERO ======== -->
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Tier-Fahrdienst &amp; Betreuung mit Herz</span>
+      <h1>Ihr Tier muss zum Tierarzt? <em>Ich fahre Sie beide.<svg viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden="true"><path d="M3 9 Q 50 2 100 7 T 197 5" fill="none" stroke="#E3A93B" stroke-width="5" stroke-linecap="round"/></svg></em></h1>
+      <p class="lead">Der Pfotenbus ist Fahrdienst, Gassi-Hilfe und Gesellschaft in einem — für Tiere und ihre Menschen in Niederstotzingen und Umgebung. Sie müssen niemanden mehr um einen Gefallen bitten: Sie rufen einfach an, und ich komme.</p>
+      <div class="hero-cta">
+        <a class="btn btn-bulli" href="tel:+491726865277"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2z"/></svg>Rufen Sie mich an</a>
+        <a class="btn btn-ghost" href="#hilfe">So helfe ich Ihnen</a>
+      </div>
+      <p class="hero-tel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2z"/></svg><a href="tel:+491726865277">0172 686 52 77</a></p>
+      <ul class="hero-trust">
+        <li><svg viewBox="0 0 24 24" fill="#B5472F" aria-hidden="true"><ellipse cx="12" cy="16.5" rx="4.4" ry="3.6"/><circle cx="6.2" cy="11.5" r="2.2"/><circle cx="10" cy="8.6" r="2.3"/><circle cx="14" cy="8.6" r="2.3"/><circle cx="17.8" cy="11.5" r="2.2"/></svg>Hunde, Katzen &amp; Co.</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="#B5472F" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="9" cy="8" r="3.4"/><path d="M3.5 20 c0-3.6 2.5-5.8 5.5-5.8 s5.5 2.2 5.5 5.8"/><path d="M15.5 8.2 a3.2 3.2 0 1 1 3 5.3"/><path d="M16.8 14.4 c2.4.4 3.9 2.3 3.9 5.6"/></svg>Sie fahren einfach mit</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="#B5472F" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2.4"/></svg>Zeit ist eingeplant</li>
+      </ul>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <!-- Der Pfotenbus unterwegs: T1 von der Seite, Klaus am Steuer, Hund & Katze schauen raus -->
+      <svg viewBox="0 0 560 330" role="img" aria-label="Illustration: Ein alter rot-cremefarbener Bulli fährt durch sanfte Hügel, ein Hund und eine Katze schauen aus den Fenstern.">
+        <circle cx="478" cy="56" r="24" fill="#E3A93B"/>
+        <g stroke="#E3A93B" stroke-width="3" stroke-linecap="round" opacity=".65">
+          <path d="M478 18 v12 M478 82 v12 M440 56 h12 M504 56 h12 M451 29 l8.5 8.5 M496.5 74.5 l8.5 8.5 M505 29 l-8.5 8.5 M459.5 74.5 l-8.5 8.5"/>
+        </g>
+        <g class="cloud-a" fill="#FFFDF7" opacity=".95">
+          <ellipse cx="120" cy="52" rx="34" ry="13"/><ellipse cx="146" cy="44" rx="24" ry="11"/><ellipse cx="98" cy="44" rx="20" ry="9"/>
+        </g>
+        <g class="cloud-b" fill="#FFFDF7" opacity=".8">
+          <ellipse cx="300" cy="84" rx="28" ry="10"/><ellipse cx="320" cy="77" rx="18" ry="8"/>
+        </g>
+        <ellipse cx="120" cy="276" rx="250" ry="104" fill="#CBDCB2"/>
+        <ellipse cx="445" cy="290" rx="275" ry="112" fill="#B3CB9B"/>
+        <ellipse cx="265" cy="312" rx="215" ry="96" fill="#A8C295"/>
+        <g>
+          <rect x="38" y="196" width="8" height="22" rx="3" fill="#6F523B"/>
+          <circle cx="42" cy="186" r="20" fill="#7E9B72"/><circle cx="30" cy="196" r="13" fill="#8FAD7E"/>
+          <rect x="508" y="208" width="7" height="18" rx="3" fill="#6F523B"/>
+          <circle cx="511" cy="198" r="16" fill="#7E9B72"/>
+        </g>
+        <path d="M-10 292 C 150 272, 400 300, 570 280" stroke="#6E5F50" stroke-width="38" fill="none" stroke-linecap="round"/>
+        <path d="M-10 292 C 150 272, 400 300, 570 280" stroke="#FAF3E3" stroke-width="3.5" fill="none" stroke-dasharray="16 14" opacity=".75"/>
+        <!-- Pfotenspur hinter dem Bus -->
+        <g fill="#FAF3E3">
+          <g class="paw-t"   transform="translate(40 282) rotate(-6) scale(.8)"><ellipse cx="0" cy="3" rx="4.6" ry="3.8"/><circle cx="-5" cy="-3" r="2.2"/><circle cx="0" cy="-4.6" r="2.2"/><circle cx="5" cy="-3" r="2.2"/></g>
+          <g class="paw-t p2" transform="translate(66 290) rotate(5) scale(.8)"><ellipse cx="0" cy="3" rx="4.6" ry="3.8"/><circle cx="-5" cy="-3" r="2.2"/><circle cx="0" cy="-4.6" r="2.2"/><circle cx="5" cy="-3" r="2.2"/></g>
+          <g class="paw-t p3" transform="translate(94 281) rotate(-4) scale(.8)"><ellipse cx="0" cy="3" rx="4.6" ry="3.8"/><circle cx="-5" cy="-3" r="2.2"/><circle cx="0" cy="-4.6" r="2.2"/><circle cx="5" cy="-3" r="2.2"/></g>
+          <g class="paw-t p4" transform="translate(120 290) rotate(7) scale(.8)"><ellipse cx="0" cy="3" rx="4.6" ry="3.8"/><circle cx="-5" cy="-3" r="2.2"/><circle cx="0" cy="-4.6" r="2.2"/><circle cx="5" cy="-3" r="2.2"/></g>
+          <g class="paw-t p5" transform="translate(147 283) rotate(-5) scale(.8)"><ellipse cx="0" cy="3" rx="4.6" ry="3.8"/><circle cx="-5" cy="-3" r="2.2"/><circle cx="0" cy="-4.6" r="2.2"/><circle cx="5" cy="-3" r="2.2"/></g>
+        </g>
+        <!-- Der Bulli (äußere Gruppe positioniert, innere animiert — CSS-transform würde das Attribut sonst überschreiben) -->
+        <g transform="translate(170 162)"><g class="bus-group">
+          <g transform="translate(120 6)"><g class="heart-f"><path d="M0 8 c-4-3.4-6.8-5.6-6.8-8.6 a3.9 3.9 0 0 1 6.8-2.6 a3.9 3.9 0 0 1 6.8 2.6 c0 3-2.8 5.2-6.8 8.6z" fill="#B5472F"/></g></g>
+          <g transform="translate(148 12)"><g class="heart-f h2"><path d="M0 8 c-3.2-2.7-5.4-4.5-5.4-6.9 a3.1 3.1 0 0 1 5.4-2 a3.1 3.1 0 0 1 5.4 2 c0 2.4-2.2 4.2-5.4 6.9z" fill="#E3A93B"/></g></g>
+          <!-- Gepäck auf dem Dach -->
+          <rect x="78" y="-1" width="34" height="13" rx="2.5" fill="#B68B5C" stroke="#3A2A1E" stroke-width="2.5"/>
+          <path d="M88 -1 v13 M102 -1 v13" stroke="#3A2A1E" stroke-width="1.6" opacity=".5"/>
+          <rect x="64" y="11" width="92" height="5" rx="2.5" fill="#6F523B" stroke="#3A2A1E" stroke-width="2"/>
+          <!-- Karosserie -->
+          <path d="M16 102 Q4 102 4 90 V36 Q4 16 26 16 H212 Q246 16 264 46 Q274 60 274 86 Q274 102 258 102 Z" fill="#B5472F"/>
+          <path d="M4 60 V36 Q4 16 26 16 H212 Q240 16 257 40 Q264 49 268 60 Z" fill="#F7EBD3"/>
+          <path d="M4 60 H268" stroke="#3A2A1E" stroke-width="2.5"/>
+          <!-- Fenster -->
+          <rect x="20" y="26" width="44" height="26" rx="6" fill="#CFE4DC" stroke="#3A2A1E" stroke-width="2.5"/>
+          <rect x="72" y="26" width="44" height="26" rx="6" fill="#CFE4DC" stroke="#3A2A1E" stroke-width="2.5"/>
+          <rect x="124" y="26" width="44" height="26" rx="6" fill="#CFE4DC" stroke="#3A2A1E" stroke-width="2.5"/>
+          <path d="M180 52 V32 q0-6 6-6 h20 q16 4 26 22 l2 4 z" fill="#CFE4DC" stroke="#3A2A1E" stroke-width="2.5" stroke-linejoin="round"/>
+          <!-- Klaus am Steuer (Silhouette mit Schiebermütze) -->
+          <g fill="#3A2A1E">
+            <path d="M196 52 v-5 q0-8 8-8 t8 8 v5 z"/>
+            <circle cx="204" cy="36" r="6.5"/>
+            <path d="M196.5 34 a7.5 6 0 0 1 15 .2 l3.5 -.2 q1.6 0 1.2 1.6 l-.6 1.4 h-19z"/>
+          </g>
+          <path d="M222 47 a6 6 0 0 1 6 -3" stroke="#3A2A1E" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <!-- Katze im hinteren Fenster -->
+          <g>
+            <path d="M34 38 L31.8 28.5 L40 33.5 Z" fill="#98897C" stroke="#3A2A1E" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M50 38 L52.2 28.5 L44 33.5 Z" fill="#98897C" stroke="#3A2A1E" stroke-width="2" stroke-linejoin="round"/>
+            <circle cx="42" cy="42" r="8.5" fill="#98897C" stroke="#3A2A1E" stroke-width="2.5"/>
+            <circle cx="38.6" cy="40.6" r="1.5" fill="#3A2A1E"/><circle cx="45.4" cy="40.6" r="1.5" fill="#3A2A1E"/>
+            <path d="M42 43.6 l-1.3 1.6 h2.6 z" fill="#E2826E"/>
+            <path d="M52 50 q9 3 13 -2" stroke="#98897C" stroke-width="4" fill="none" stroke-linecap="round"/>
+          </g>
+          <!-- Hund im mittleren Fenster, Ohren im Fahrtwind -->
+          <g>
+            <path d="M96 30 q-13 -6 -22 -2 q-3 1.6 -1 4 q6 6 16 4z" fill="#6F523B" stroke="#3A2A1E" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M99 40 q-14 -2 -20 4 q-2.4 2.6 .6 4.4 q7 3.6 16 -1.4z" fill="#6F523B" stroke="#3A2A1E" stroke-width="2" stroke-linejoin="round"/>
+            <circle cx="105" cy="38" r="12" fill="#8A6A4F" stroke="#3A2A1E" stroke-width="2.5"/>
+            <ellipse cx="109.5" cy="42" rx="6.4" ry="5" fill="#C9A77F"/>
+            <circle cx="112.5" cy="39.6" r="2.4" fill="#3A2A1E"/>
+            <circle cx="102" cy="34.4" r="1.9" fill="#3A2A1E"/>
+            <path d="M112 45 q4 3.4 3 6.6 q-2.2 1.8 -4.2-1 q-1.2-2 -.4-4.2z" fill="#E2826E" stroke="#3A2A1E" stroke-width="1.6" stroke-linejoin="round"/>
+          </g>
+          <!-- Türen & Details -->
+          <path d="M70 62 V98 M120 62 V98" stroke="#3A2A1E" stroke-width="1.6" opacity=".35"/>
+          <circle cx="75" cy="76" r="2" fill="#F7EBD3"/><circle cx="125" cy="76" r="2" fill="#F7EBD3"/>
+          <circle cx="262" cy="72" r="7" fill="#FFF8E6" stroke="#3A2A1E" stroke-width="2.5"/><circle cx="262" cy="72" r="3.4" fill="#E3A93B"/>
+          <path d="M16 102 Q4 102 4 90 V36 Q4 16 26 16 H212 Q246 16 264 46 Q274 60 274 86 Q274 102 258 102 Z" fill="none" stroke="#3A2A1E" stroke-width="3" stroke-linejoin="round"/>
+          <!-- Pfoten-Emblem an der Seite -->
+          <g transform="translate(148 80)">
+            <circle r="9" fill="#F7EBD3" stroke="#3A2A1E" stroke-width="2"/>
+            <ellipse cx="0" cy="2.6" rx="3.5" ry="2.7" fill="#B5472F"/>
+            <circle cx="-4" cy="-2" r="1.7" fill="#B5472F"/><circle cx="0" cy="-3.4" r="1.7" fill="#B5472F"/><circle cx="4" cy="-2" r="1.7" fill="#B5472F"/>
+          </g>
+          <!-- Räder -->
+          <path d="M30 100 a19 19 0 0 1 38 0 M196 100 a19 19 0 0 1 38 0" stroke="#3A2A1E" stroke-width="3" fill="none"/>
+          <g class="wheel"><circle cx="49" cy="104" r="15" fill="#3A2A1E"/><circle cx="49" cy="104" r="6.5" fill="#F7EBD3"/><path d="M49 98 v12 M43 104 h12" stroke="#3A2A1E" stroke-width="2"/></g>
+          <g class="wheel"><circle cx="215" cy="104" r="15" fill="#3A2A1E"/><circle cx="215" cy="104" r="6.5" fill="#F7EBD3"/><path d="M215 98 v12 M209 104 h12" stroke="#3A2A1E" stroke-width="2"/></g>
+        </g></g>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<!-- ======== KENNEN SIE DAS? ======== -->
+<section id="kennen" aria-labelledby="kennen-h">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow">Kennen Sie das?</span>
+      <h2 id="kennen-h">Drei Augenblicke, für die es den Pfotenbus gibt.</h2>
+    </div>
+    <div class="cards">
+      <article class="card reveal">
+        <svg class="ic" viewBox="0 0 64 64" fill="none" stroke="#B5472F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="10" y="14" width="44" height="36" rx="6"/><path d="M10 26 h44 M22 14 v-4 M42 14 v-4"/><path d="M20 38 h8 M20 44 h12" stroke="#E3A93B"/><circle cx="44" cy="41" r="6" stroke="#3A2A1E"/><path d="M44 38 v3 l2 2" stroke="#3A2A1E"/></svg>
+        <h3>Der Termin steht — aber wie hinkommen?</h3>
+        <p>Das Auto ist abgegeben, der Bus fährt ungünstig, und mit Katzenkorb wird jeder Weg doppelt so weit. Genau für solche Tage gibt es den Pfotenbus.</p>
+      </article>
+      <article class="card reveal">
+        <svg class="ic" viewBox="0 0 64 64" fill="none" stroke="#B5472F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 52 V30 l18-14 18 14 v22" /><path d="M26 52 v-12 h12 v12" stroke="#3A2A1E"/><path d="M8 30 l24-18 24 18" stroke="#E3A93B"/></svg>
+        <h3>Nicht schon wieder die Nachbarn fragen.</h3>
+        <p>Hilfe anzunehmen fällt leichter, wenn man niemandem etwas schuldig bleibt. Mich rufen Sie ganz offiziell — das ist kein Gefallen, das ist mein Dienst.</p>
+      </article>
+      <article class="card reveal">
+        <svg class="ic" viewBox="0 0 64 64" fill="none" stroke="#B5472F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M32 52 c-10-8.5-17-14.2-17-22 a10 10 0 0 1 17-7 a10 10 0 0 1 17 7 c0 7.8-7 13.5-17 22z"/><ellipse cx="32" cy="33" rx="4.6" ry="3.8" fill="#B5472F" stroke="none"/><circle cx="26.5" cy="27" r="2.2" fill="#B5472F" stroke="none"/><circle cx="32" cy="25.4" r="2.2" fill="#B5472F" stroke="none"/><circle cx="37.5" cy="27" r="2.2" fill="#B5472F" stroke="none"/></svg>
+        <h3>Mit der Sorge nicht allein bleiben.</h3>
+        <p>Wenn es dem Liebling nicht gut geht, ist alles leichter, wenn jemand mitkommt, zuhört und in Ruhe mitdenkt. Dafür bin ich da — nicht nur als Fahrer.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ======== LEISTUNGEN ======== -->
+<!-- VOM KUNDEN ZU PRÜFEN: endgültiges Leistungs-Spektrum bestätigt Klaus (s. _projekt/OFFENE-FRAGEN.md) -->
+<section id="hilfe" aria-labelledby="hilfe-h" style="padding-top:0">
+  <div class="wrap">
+    <div class="paw-divider" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="#B5472F"><ellipse cx="12" cy="16.5" rx="4.4" ry="3.6"/><circle cx="6.2" cy="11.5" r="2.2"/><circle cx="10" cy="8.6" r="2.3"/><circle cx="14" cy="8.6" r="2.3"/><circle cx="17.8" cy="11.5" r="2.2"/></svg>
+      <svg viewBox="0 0 24 24" fill="#B5472F"><ellipse cx="12" cy="16.5" rx="4.4" ry="3.6"/><circle cx="6.2" cy="11.5" r="2.2"/><circle cx="10" cy="8.6" r="2.3"/><circle cx="14" cy="8.6" r="2.3"/><circle cx="17.8" cy="11.5" r="2.2"/></svg>
+      <svg viewBox="0 0 24 24" fill="#B5472F"><ellipse cx="12" cy="16.5" rx="4.4" ry="3.6"/><circle cx="6.2" cy="11.5" r="2.2"/><circle cx="10" cy="8.6" r="2.3"/><circle cx="14" cy="8.6" r="2.3"/><circle cx="17.8" cy="11.5" r="2.2"/></svg>
+      <svg viewBox="0 0 24 24" fill="#B5472F"><ellipse cx="12" cy="16.5" rx="4.4" ry="3.6"/><circle cx="6.2" cy="11.5" r="2.2"/><circle cx="10" cy="8.6" r="2.3"/><circle cx="14" cy="8.6" r="2.3"/><circle cx="17.8" cy="11.5" r="2.2"/></svg>
+    </div>
+    <div class="reveal">
+      <span class="eyebrow">So helfe ich Ihnen</span>
+      <h2 id="hilfe-h">Vier Dinge, die der Pfotenbus kann.</h2>
+      <p class="lead">Alles beginnt mit einem Anruf — und endet erst, wenn Tier und Mensch wieder gut zu Hause sind.</p>
+    </div>
+    <div class="cards four">
+      <article class="card reveal">
+        <svg class="ic" viewBox="0 0 64 64" fill="none" stroke="#3A2A1E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 42 V22 q0-8 8-8 h26 q10 0 14 12 q2 6 2 12 q0 4-4 4 h-2" fill="#FFF"/><path d="M8 24 h40" stroke="#B5472F"/><rect x="14" y="18" width="11" height="8" rx="2" stroke="#3A2A1E"/><rect x="30" y="18" width="11" height="8" rx="2" stroke="#3A2A1E"/><circle cx="20" cy="44" r="6"/><circle cx="46" cy="44" r="6"/><circle cx="20" cy="44" r="2" fill="#3A2A1E"/><circle cx="46" cy="44" r="2" fill="#3A2A1E"/></svg>
+        <h3>Fahrten mit Begleitung</h3>
+        <p>Zum Tierarzt, zur Tierpension, zum Hundefriseur — und sicher wieder heim. Das Beste: Der Beifahrersitz gehört Ihnen. Ich bleibe dabei, bis alles erledigt ist.</p>
+      </article>
+      <article class="card reveal">
+        <svg class="ic" viewBox="0 0 64 64" fill="none" stroke="#3A2A1E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 14 q20 2 26 18 q3 8-2 14" /><circle cx="12" cy="13" r="5"/><ellipse cx="40" cy="50" rx="5.5" ry="4.4" fill="#B5472F" stroke="none"/><circle cx="33" cy="43.5" r="2.6" fill="#B5472F" stroke="none"/><circle cx="40" cy="41.5" r="2.6" fill="#B5472F" stroke="none"/><circle cx="47" cy="43.5" r="2.6" fill="#B5472F" stroke="none"/></svg>
+        <h3>Gassi &amp; Betreuung</h3>
+        <p>Wenn die Hüfte streikt oder ein Termin dazwischenkommt: Ich gehe mit Ihrem Hund seine Lieblingsrunde, schaue nach der Katze und fülle Napf und Wasserschale.</p>
+      </article>
+      <article class="card reveal">
+        <svg class="ic" viewBox="0 0 64 64" fill="none" stroke="#3A2A1E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 26 h36 l-4 24 q-.5 4-4.5 4 h-19 q-4 0-4.5-4 z" fill="#FFF"/><path d="M22 26 a10 10 0 0 1 20 0" stroke="#B5472F"/><ellipse cx="32" cy="42" rx="3.6" ry="2.9" fill="#B5472F" stroke="none"/><circle cx="27.5" cy="37.5" r="1.8" fill="#B5472F" stroke="none"/><circle cx="32" cy="36" r="1.8" fill="#B5472F" stroke="none"/><circle cx="36.5" cy="37.5" r="1.8" fill="#B5472F" stroke="none"/></svg>
+        <h3>Besorgungen rund ums Tier</h3>
+        <p>Futter, Medikamente aus der Tierarztpraxis, frische Streu: Ich bringe, was gebraucht wird — bis an Ihre Tür, mit einem kurzen Plausch dazu.</p>
+      </article>
+      <article class="card reveal">
+        <svg class="ic" viewBox="0 0 64 64" fill="none" stroke="#3A2A1E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 30 h28 v10 a12 12 0 0 1-12 12 h-4 a12 12 0 0 1-12-12 z" fill="#FFF"/><path d="M42 33 h4 a5 5 0 0 1 0 10 h-5"/><path d="M24 22 q-3-4 1-7 M32 22 q-3-4 1-7" stroke="#B5472F"/><path d="M28 40 c-2.6-2.2-4.4-3.6-4.4-5.6 a2.5 2.5 0 0 1 4.4-1.6 a2.5 2.5 0 0 1 4.4 1.6 c0 2-1.8 3.4-4.4 5.6z" fill="#B5472F" stroke="none"/></svg>
+        <h3>Zeit &amp; Zuhören</h3>
+        <p>Manchmal ist das Wichtigste ein Mensch, der bleibt: im Wartezimmer, bei schweren Nachrichten — oder bei einem Kaffee, wenn das Haus zu still geworden ist.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ======== ABLAUF ======== -->
+<section id="ablauf" aria-labelledby="ablauf-h" style="background:var(--hell)">
+  <div class="wrap">
+    <div class="reveal center">
+      <span class="eyebrow">So einfach geht’s</span>
+      <h2 id="ablauf-h">Drei Schritte — mehr ist es nicht.</h2>
+    </div>
+    <div class="steps">
+      <article class="step reveal">
+        <svg class="ic" viewBox="0 0 64 64" fill="none" stroke="#3A2A1E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 24 q16-12 32 0" stroke="#B5472F"/><rect x="10" y="24" width="12" height="14" rx="4" fill="#B5472F" stroke="#3A2A1E"/><rect x="42" y="24" width="12" height="14" rx="4" fill="#B5472F" stroke="#3A2A1E"/><path d="M20 44 q12 10 24 0" /><circle cx="32" cy="49" r="2" fill="#3A2A1E" stroke="none"/></svg>
+        <h3>Sie rufen an.</h3>
+        <p>Wir besprechen in Ruhe, was ansteht — Termin, Abholung, Besonderheiten Ihres Tieres. <!-- VOM KUNDEN ZU PRÜFEN: Festpreis-Versprechen --> Den Preis erfahren Sie vorher, klar und fair.</p>
+      </article>
+      <article class="step reveal">
+        <svg class="ic" viewBox="0 0 64 64" fill="none" stroke="#3A2A1E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 44 V26 q0-6 6-6 h22 q8 0 11 9 q2 5 2 11 q0 4-4 4" fill="#FFF"/><path d="M10 28 h36" stroke="#B5472F"/><circle cx="18" cy="46" r="5"/><circle cx="40" cy="46" r="5"/><path d="M52 20 l4-4 M54 28 h6 M50 13 v-5" stroke="#E3A93B"/></svg>
+        <h3>Der Pfotenbus kommt.</h3>
+        <p>Pünktlich vor Ihrer Haustür, mit Platz für Korb, Leine, Decke — und für Sie. Niemand muss hetzen, das Tempo bestimmen Sie.</p>
+      </article>
+      <article class="step reveal">
+        <svg class="ic" viewBox="0 0 64 64" fill="none" stroke="#3A2A1E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 50 V30 l18-14 18 14 v20 h-12 v-12 h-12 v12 z"/><path d="M32 38 c-2.8-2.4-4.8-4-4.8-6.2 a2.8 2.8 0 0 1 4.8-1.8 a2.8 2.8 0 0 1 4.8 1.8 c0 2.2-2 3.8-4.8 6.2z" fill="#B5472F" stroke="none"/></svg>
+        <h3>Gemeinsam hin &amp; sicher zurück.</h3>
+        <p>Ich begleite Sie hinein, warte mit Ihnen und bringe Sie beide wieder nach Hause. Erst wenn Ihre Tür zu ist, ist meine Fahrt zu Ende.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ======== ÜBER KLAUS ======== -->
+<!-- VOM KUNDEN ZU PRÜFEN: gesamter Über-mich-Text ist ein Vorschlag auf Basis von Lennys Notizen -->
+<section id="klaus" class="klaus" aria-labelledby="klaus-h">
+  <div class="wrap">
+    <div class="klaus-grid">
+      <div class="reveal">
+        <span class="eyebrow">Wer hier fährt</span>
+        <h2 id="klaus-h">Ich bin Klaus.</h2>
+        <div class="body">
+          <p>62 Jahre alt, Tierfreund durch und durch — und ein Mensch, der lieber zuhört als hetzt. Beides kommt Ihnen zugute: Bei mir hat jede Fahrt so viel Zeit, wie sie braucht.</p>
+          <p>Warum ein alter Bulli? Er erinnert mich an einen Menschen, der mir wie ein Vater war. Von ihm habe ich gelernt, dass die wichtigsten Fahrten die sind, auf denen man füreinander da ist. Genau so eine Fahrt möchte der Pfotenbus für Sie sein.</p>
+          <p>Und falls Sie sich über den Namen auf dem Klingelschild wundern:</p>
+        </div>
+        <div class="quote-card reveal">
+          <p class="q">„Ich heiße wirklich Porsche.<br>Gefahren wird trotzdem Bulli.“</p>
+          <p class="q-note">Klaus Porsche, Gründer &amp; Fahrer des Pfotenbusses</p>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="polaroid">
+          <img src="assets/img/klaus.jpg" alt="Klaus Porsche lacht herzlich in die Kamera — grauer Bart, freundliches Gesicht." width="720" height="799" loading="lazy" decoding="async">
+          <p class="caption">Der Fahrer wäre startklar — der Bulli kommt noch. 😉</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== SCHWERE STUNDEN ======== -->
+<section id="abschied" class="abschied" aria-labelledby="abschied-h">
+  <div class="wrap">
+    <div class="abschied-grid reveal">
+      <svg viewBox="0 0 120 140" role="img" aria-label="Illustration: Vergissmeinnicht-Blumen">
+        <path d="M58 138 q-4-38 2-66 q3-14 12-22" fill="none" stroke="#3F5840" stroke-width="3.5" stroke-linecap="round"/>
+        <path d="M60 96 q-14-2 -20-12" fill="none" stroke="#3F5840" stroke-width="3" stroke-linecap="round"/>
+        <path d="M61 76 q12-4 14-14" fill="none" stroke="#3F5840" stroke-width="3" stroke-linecap="round"/>
+        <path d="M40 84 q-10-2 -10-12 q8-2 12 6 q1 4-2 6z" fill="#7E9B72"/>
+        <path d="M75 62 q10-4 8-14 q-8 0-11 9 q-1 4 3 5z" fill="#7E9B72"/>
+        <g transform="translate(72 36)">
+          <circle cx="0" cy="-11" r="7" fill="#9FB8D8"/><circle cx="10.5" cy="-3.5" r="7" fill="#9FB8D8"/><circle cx="6.5" cy="9" r="7" fill="#9FB8D8"/><circle cx="-6.5" cy="9" r="7" fill="#9FB8D8"/><circle cx="-10.5" cy="-3.5" r="7" fill="#9FB8D8"/>
+          <circle r="4.5" fill="#E3A93B"/>
+        </g>
+        <g transform="translate(38 58) scale(.72)">
+          <circle cx="0" cy="-11" r="7" fill="#B7CBE3"/><circle cx="10.5" cy="-3.5" r="7" fill="#B7CBE3"/><circle cx="6.5" cy="9" r="7" fill="#B7CBE3"/><circle cx="-6.5" cy="9" r="7" fill="#B7CBE3"/><circle cx="-10.5" cy="-3.5" r="7" fill="#B7CBE3"/>
+          <circle r="4.5" fill="#E3A93B"/>
+        </g>
+        <g transform="translate(94 88) scale(.55)">
+          <circle cx="0" cy="-11" r="7" fill="#9FB8D8"/><circle cx="10.5" cy="-3.5" r="7" fill="#9FB8D8"/><circle cx="6.5" cy="9" r="7" fill="#9FB8D8"/><circle cx="-6.5" cy="9" r="7" fill="#9FB8D8"/><circle cx="-10.5" cy="-3.5" r="7" fill="#9FB8D8"/>
+          <circle r="4.5" fill="#E3A93B"/>
+        </g>
+      </svg>
+      <div>
+        <span class="eyebrow">Wenn es ernst wird</span>
+        <h2 id="abschied-h">Auch die schweren Wege fahre ich mit Ihnen.</h2>
+        <p>Manche Fahrten sind die schwersten überhaupt: der letzte Besuch beim Tierarzt. Der Heimweg, wenn das Körbchen auf der Rückbank leer bleibt. Solche Wege muss niemand allein gehen.</p>
+        <p>Ich fahre Sie, ich bleibe an Ihrer Seite, und ich habe Zeit — auch in den Tagen danach, bei einem Spaziergang oder einer Tasse Kaffee, wenn Sie von Ihrem Tier erzählen möchten. Trauer um ein Tier ist keine Kleinigkeit. Bei mir müssen Sie das niemandem erklären.</p>
+        <p class="still">Kein Programm, keine Eile. Nur ein Mensch, der da ist.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== REGION ======== -->
+<!-- VOM KUNDEN ZU PRÜFEN: genaues Einzugsgebiet — Ortsliste ist ein Vorschlag („zum Beispiel") -->
+<section id="region" aria-labelledby="region-h">
+  <div class="wrap region-grid">
+    <div class="reveal">
+      <span class="eyebrow">Wo der Bulli unterwegs ist</span>
+      <h2 id="region-h">Zuhause in Niederstotzingen — unterwegs ringsum.</h2>
+      <p class="lead">Gestartet wird dort, wo ich daheim bin. Zum Beispiel:</p>
+      <ul class="orte">
+        <li class="home">Niederstotzingen</li>
+        <li>Oberstotzingen</li>
+        <li>Stetten ob Lontal</li>
+        <li>Sontheim an der Brenz</li>
+        <li>Langenau</li>
+        <li>Rammingen</li>
+        <li>Giengen an der Brenz</li>
+        <li>Herbrechtingen</li>
+      </ul>
+      <p class="region-note">Ihr Ort ist nicht dabei? Rufen Sie trotzdem an — der Bulli ist nicht kleinlich, und fragen kostet nichts.</p>
+    </div>
+    <div class="region-art reveal" aria-hidden="true">
+      <svg viewBox="0 0 420 320">
+        <rect x="10" y="10" width="400" height="300" rx="24" fill="#FFFDF7" stroke="#EBDFC8" stroke-width="2"/>
+        <path d="M60 250 C 120 200, 150 230, 200 170 S 320 110, 360 70" fill="none" stroke="#B5472F" stroke-width="3.5" stroke-dasharray="2 11" stroke-linecap="round"/>
+        <g fill="#7E9B72" opacity=".5">
+          <circle cx="90" cy="120" r="16"/><circle cx="112" cy="128" r="11"/>
+          <circle cx="330" cy="230" r="14"/><circle cx="310" cy="238" r="10"/>
+        </g>
+        <g transform="translate(60 250)">
+          <circle r="26" fill="#B5472F" opacity=".15"/>
+          <circle r="15" fill="#B5472F"/>
+          <g fill="#FAF3E3"><ellipse cx="0" cy="3.4" rx="5" ry="3.9"/><circle cx="-5.6" cy="-2.6" r="2.4"/><circle cx="0" cy="-4.4" r="2.4"/><circle cx="5.6" cy="-2.6" r="2.4"/></g>
+        </g>
+        <g transform="translate(200 170)">
+          <circle r="11" fill="#E3A93B"/>
+          <g fill="#2B1F17"><ellipse cx="0" cy="2.6" rx="3.7" ry="2.9"/><circle cx="-4.2" cy="-2" r="1.8"/><circle cx="0" cy="-3.3" r="1.8"/><circle cx="4.2" cy="-2" r="1.8"/></g>
+        </g>
+        <g transform="translate(360 70)">
+          <rect x="-24" y="-18" width="48" height="30" rx="7" fill="#B5472F" stroke="#3A2A1E" stroke-width="2.5"/>
+          <rect x="-24" y="-18" width="48" height="13" rx="6.5" fill="#F7EBD3" stroke="#3A2A1E" stroke-width="2.5"/>
+          <circle cx="-12" cy="16" r="6" fill="#3A2A1E"/><circle cx="12" cy="16" r="6" fill="#3A2A1E"/>
+          <circle cx="-12" cy="16" r="2.4" fill="#FAF3E3"/><circle cx="12" cy="16" r="2.4" fill="#FAF3E3"/>
+        </g>
+        <text x="60" y="292" font-family="Caveat,cursive" font-size="21" fill="#695342" text-anchor="middle">daheim</text>
+        <text x="316" y="38" font-family="Caveat,cursive" font-size="21" fill="#695342" text-anchor="middle">unterwegs zu Ihnen</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ======== FAQ ======== -->
+<section id="fragen" aria-labelledby="fragen-h" style="background:var(--hell)">
+  <div class="wrap">
+    <div class="reveal center">
+      <span class="eyebrow">Gut zu wissen</span>
+      <h2 id="fragen-h">Die häufigsten Fragen.</h2>
+    </div>
+    <div class="faq reveal">
+      <details>
+        <summary>Kann ich bei den Fahrten mitkommen?</summary>
+        <p class="a">Unbedingt — das ist sogar der Gedanke dahinter. Der Beifahrersitz gehört Ihnen, Ihr Tier reist gut gesichert mit. Sie müssen aber nicht: Auf Wunsch fahre ich Ihr Tier auch allein und melde mich sofort danach.</p>
+      </details>
+      <details>
+        <summary>Was kostet eine Fahrt?</summary>
+        <!-- KLÄREN: Preisliste/Preislogik von Klaus — bis dahin bewusst ohne Zahlen -->
+        <p class="a">Das hängt von Strecke und Zeit ab. Sie erfahren den Preis vorher am Telefon — fest vereinbart, ohne Überraschungen. Eine Preisliste zum Mitnehmen ist in Arbeit.</p>
+      </details>
+      <details>
+        <summary>Welche Tiere fahren mit?</summary>
+        <p class="a">Vor allem Hunde und Katzen. Für alle anderen Fellnasen, Federohren und Langohren gilt: einfach anrufen und fragen — meistens findet sich ein Plätzchen.</p>
+      </details>
+      <details>
+        <summary>Wie früh muss ich anrufen?</summary>
+        <p class="a">So früh wie möglich, so spät wie nötig. Für geplante Tierarzttermine gern ein paar Tage vorher — wenn es dringend ist, versuche ich möglich zu machen, was geht.</p>
+      </details>
+      <details>
+        <summary>Was mache ich bei einem Notfall?</summary>
+        <p class="a">Bei einem echten Notfall zählt jede Minute: Rufen Sie zuerst Ihre Tierarztpraxis oder den tierärztlichen Notdienst an. Und dann gern mich — wenn ich fahren kann, fahre ich.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ======== KONTAKT ======== -->
+<section id="kontakt" aria-labelledby="kontakt-h">
+  <div class="wrap">
+    <div class="kontakt-card reveal">
+      <span class="eyebrow">Sprechen wir!</span>
+      <h2 id="kontakt-h">Rufen Sie mich einfach an.</h2>
+      <p class="lead" style="margin-inline:auto">Am Telefon klären wir alles — ganz altmodisch und unkompliziert. Wenn ich gerade am Steuer sitze, rufe ich zurück. Versprochen.</p>
+      <a class="tel-chip" href="tel:+491726865277"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2z"/></svg>0172 686 52 77</a>
+      <p class="tel-note">Einfach anrufen — am Telefon bin ich ganz altmodisch erreichbar.</p>
+      <div class="kontakt-zeilen">
+        <!-- HIER: Erreichbarkeitszeiten eintragen -->
+        <p><b>Erreichbar:</b> Die genauen Zeiten trägt Klaus hier ein.</p>
+        <p>Und sonst: Wenn der Bulli irgendwo in Niederstotzingen parkt — sprechen Sie mich gern einfach an.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ======== FOOTER ======== -->
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <div class="brandline">
+          <svg viewBox="0 0 120 112" aria-hidden="true">
+            <circle cx="32" cy="99" r="9" fill="#FAF3E3" opacity=".9"/><circle cx="88" cy="99" r="9" fill="#FAF3E3" opacity=".9"/>
+            <path d="M10 92 V32 Q10 12 30 12 H90 Q110 12 110 32 V92 Z" fill="#B5472F"/>
+            <path d="M10 56 V32 Q10 12 30 12 H90 Q110 12 110 32 V56 Z" fill="#F7EBD3"/>
+            <path d="M42 56 H78 L66 92 H54 Z" fill="#F7EBD3"/>
+            <rect x="20" y="22" width="34" height="26" rx="7" fill="#CFE4DC"/>
+            <rect x="66" y="22" width="34" height="26" rx="7" fill="#CFE4DC"/>
+            <circle cx="60" cy="70" r="10" fill="#F7EBD3"/>
+            <ellipse cx="60" cy="73" rx="4" ry="3.1" fill="#B5472F"/>
+            <circle cx="55.4" cy="67.6" r="2" fill="#B5472F"/><circle cx="60" cy="66" r="2" fill="#B5472F"/><circle cx="64.6" cy="67.6" r="2" fill="#B5472F"/>
+            <circle cx="24" cy="68" r="7" fill="#FFF8E6"/><circle cx="24" cy="68" r="3.4" fill="#E3A93B"/>
+            <circle cx="96" cy="68" r="7" fill="#FFF8E6"/><circle cx="96" cy="68" r="3.4" fill="#E3A93B"/>
+            <rect x="16" y="88" width="88" height="9" rx="4.5" fill="#E8D9BD"/>
+          </svg>
+          <span class="name">Der Pfotenbus</span>
+        </div>
+        <p class="claim">Tier-Fahrdienst &amp; Betreuung mit Herz — für Tiere und ihre Menschen in Niederstotzingen und Umgebung.</p>
+      </div>
+      <div>
+        <h3>Auf dieser Seite</h3>
+        <ul>
+          <li><a href="#hilfe">So helfe ich Ihnen</a></li>
+          <li><a href="#ablauf">So einfach geht’s</a></li>
+          <li><a href="#klaus">Über mich</a></li>
+          <li><a href="#region">Region</a></li>
+          <li><a href="#fragen">Häufige Fragen</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Kontakt &amp; Rechtliches</h3>
+        <ul>
+          <li><a href="tel:+491726865277">0172 686 52 77</a></li>
+          <li><a href="impressum.html">Impressum (Entwurf)</a></li>
+          <li><a href="datenschutz.html">Datenschutz (Entwurf)</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="legal">
+      <span>© 2026 Der Pfotenbus · Klaus Porsche, Niederstotzingen</span>
+      <span>Unverbindliche Design-Vorschau — ein Geschenk für Klaus, handgebaut mit ♥ von Lechcode, Landsberg am Lech</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Sticky-Kontaktleiste (mobil) -->
+<nav class="sticky-bar" aria-label="Schnellkontakt">
+  <a href="tel:+491726865277"><span class="em">📞</span>Anrufen</a>
+  <a href="#hilfe"><span class="em">🐾</span>Leistungen</a>
+  <a href="#fragen"><span class="em">❓</span>Fragen</a>
+</nav>
+
+<script>
+(function(){
+  var nav=document.getElementById('nav');
+  var onScroll=function(){nav.classList.toggle('scrolled',window.scrollY>24)};
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  var burger=document.getElementById('burger'),body=document.body;
+  burger.addEventListener('click',function(){
+    var open=body.classList.toggle('menu-open');
+    burger.setAttribute('aria-expanded',open?'true':'false');
+    burger.setAttribute('aria-label',open?'Menü schließen':'Menü öffnen');
+  });
+  document.querySelectorAll('.mobile-menu a').forEach(function(a){
+    a.addEventListener('click',function(){body.classList.remove('menu-open');burger.setAttribute('aria-expanded','false')});
+  });
+
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)');
+  var reveals=document.querySelectorAll('.reveal');
+  if(reduce.matches||!('IntersectionObserver' in window)){
+    reveals.forEach(function(el){el.classList.add('in')});
+  }else{
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}});
+    },{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+    reveals.forEach(function(el){io.observe(el)});
+  }
+
+  /* Foto-Modus (?foto&y=N): für interne Beweis-Screenshots — verschiebt die Seite statt zu scrollen */
+  var ym=location.search.match(/[?&]y=(\d+)/);
+  if(ym&&+ym[1]>0){document.body.style.transform='translateY(-'+ym[1]+'px)';}
+})();
+</script>
+</body>
+</html>

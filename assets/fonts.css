@@ -1,0 +1,15 @@
+/* ============================================================
+   PFOTENBUS · lokal gehostete Schriften (latin-Subset, OFL)
+   DSGVO: keine Verbindung zu Google/Drittservern.
+   4 Dateien, ~97 KB gesamt — Budget eingehalten.
+   ============================================================ */
+
+/* — Fraunces (Display, warm & charaktervoll) — */
+@font-face{font-family:'Fraunces';font-style:normal;font-weight:900;font-display:swap;src:url(fonts/fraunces-900.woff2) format('woff2');}
+
+/* — Nunito (Fließtext, rund & sehr gut lesbar — seniorenfreundlich) — */
+@font-face{font-family:'Nunito';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/nunito-400.woff2) format('woff2');}
+@font-face{font-family:'Nunito';font-style:normal;font-weight:700;font-display:swap;src:url(fonts/nunito-700.woff2) format('woff2');}
+
+/* — Caveat (Handschrift-Akzent) — */
+@font-face{font-family:'Caveat';font-style:normal;font-weight:700;font-display:swap;src:url(fonts/caveat-700.woff2) format('woff2');}
